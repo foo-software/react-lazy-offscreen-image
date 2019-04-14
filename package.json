@@ -1,7 +1,7 @@
 {
   "name": "@foo-software/react-lazy-offscreen-image",
-  "version": "0.0.12",
-  "description": "A React scroll context provider and consumer for detecting scroll position (scrollX, scrollY) and providing that data to child components.",
+  "version": "0.0.1",
+  "description": "A lazy loading React component to display a background image when in the viewport and the image is loaded.",
   "main": "build/index.js",
   "peerDependencies": {
     "react": "^16.8",
