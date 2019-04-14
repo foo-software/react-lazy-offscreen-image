@@ -1,6 +1,6 @@
 # `@foo-software/react-lazy-offscreen-image`
 
-> **React Lazy Offscreen Image** exports a [React context](https://reactjs.org/docs/context.html) provider and consumer. It provides `window` scroll data to a consumer.
+> **React Lazy Offscreen Image** exports a lazy loading React component to display a background image when in the viewport and the image is loaded. When analyzing website performance with tools like [Lighthouse](https://developers.google.com/web/tools/lighthouse/) for example, often an opportunity for improvement is to load images below the fold on demand - asynchronously. [Lighthouse documentation explains offscreen image performance metric](https://developers.google.com/web/tools/lighthouse/audits/offscreen-images) in detail. This component provides lazy loading of images as an element with a backround image, when the user has scrolled it into the browser viewport. This technique is known as "lazy loading".
 
 ## Install
 
@@ -16,6 +16,11 @@ npm install @foo-software/react-lazy-offscreen-image
 yarn add @foo-software/react-lazy-offscreen-image
 ```
 
+## Dependencies
+
+- `react@16.8`
+- [`react-scroll-context`](https://www.npmjs.com/package/@foo-software/react-scroll-context): Used to provide scroll data.
+
 ## Props
 
 <table>
@@ -27,99 +32,53 @@ yarn add @foo-software/react-lazy-offscreen-image
     <th>Default</th>
   </tr>
   <tr>
-    <td><code>Context</code></td>
-    <td>A <code>Context</code> object created by <code>React.createContext()</code></td>
+    <td><code>children</code></td>
+    <td>Anything that can be rendered, but typically a tree of elements. The background image will be added to the container. <code>children</code> can optionally be specifid to render inside the container with the background image.</td>
+    <td><code>node</code></td>
+    <td><code>false</code></td>
+    <td><code>null</code></td>
+  </tr>
+  <tr>
+    <td><code>className</code></td>
+    <td>An optional custom <code>className</code> to be added to the container.</td>
+    <td><code>string</code></td>
+    <td><code>false</code></td>
+    <td><code>null</code></td>
+  </tr>
+  <tr>
+    <td><code>CustomTag</code></td>
+    <td>A custom HTML tag used for the container element.</td>
+    <td><code>string</code></td>
+    <td><code>false</code></td>
+    <td><code>div</code></td>
+  </tr>
+  <tr>
+    <td><code>imageUrl</code></td>
+    <td>The image URL for the background image.</td>
+    <td><code>string</code></td>
+    <td><code>true</code></td>
+    <td><code>--</code></td>
+  </tr>
+  <tr>
+    <td><code>ScrollContext</code></td>
+    <td>A scroll <code>Context</code> object created by <code>React.createContext()</code>. You will need to use the same context as with [`react-scroll-context`](https://www.npmjs.com/package/@foo-software/react-scroll-context). This component depends on `react-scroll-context` to provide scroll data.</td>
     <td><code>object</code></td>
     <td><code>true</code></td>
     <td><code>--</code></td>
-  </tr>
-  <tr>
-    <td><code>children</code></td>
-    <td>Anything that can be rendered, but typically a tree of elements. Scroll data can be consumed from anywhere in this tree.</td>
-    <td><code>node</code></td>
-    <td><code>true</code></td>
-    <td><code>--</code></td>
-  </tr>
-  <tr>
-    <td><code>throttleTime</code></td>
-    <td>Time in milleseconds to throttle calculations of scroll.</td>
-    <td><code>number</code></td>
-    <td><code>false</code></td>
-    <td><code>200</code></td>
-  </tr>
-</table>
-
-## Exposed Context Consumer Data
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td><code>scrollX</code></td>
-    <td>The current value of <code>window.scrollX</code>.</td>
-  </tr>
-  <tr>
-    <td><code>scrollY</code></td>
-    <td>The current value of <code>window.scrollY</code>.</td>
   </tr>
 </table>
 
 ## Usage
 
-> Standard
+Example combined with [`react-scroll-context`](https://www.npmjs.com/package/@foo-software/react-scroll-context).
 
 ```jsx
 import React from 'react';
-import { ScrollProvider } from '@foo-software/react-lazy-offscreen-image';
+import { ScrollProvider } from '@foo-software/react-scroll-context';
+import { LazyOffscreenImage } from '@foo-software/react-lazy-offscreen-image';
 
 // replace `scroll-context` any name you like.
-const Context = React.createContext('scroll-context');
-
-const ScrollDisplay = () => (
-  <ScrollProvider
-    Context={Context}
-  >
-    <div>
-      <h1>Scroll it!</h1>
-      <Context.Consumer>
-        {({ scrollX, scrollY, isScrollingDown }) => (
-          <pre>
-            scrollX: {scrollX}
-            scrollY: {scrollY}
-            isScrollingDown: {isScrollingDown ? 'yes' : 'no'}
-          </pre>
-        )}
-      </Context.Consumer>
-    </div>
-  </ScrollProvider>
-);
-```
-
-> Class
-
-```jsx
-import React, { Component } from 'react';
-import { ScrollProvider } from '@foo-software/react-lazy-offscreen-image';
-
-// replace `scroll-context` any name you like.
-const Context = React.createContext('scroll-context');
-
-class ScrollDisplay extends Component {
-  static contextType = Context;
-
-  render() {
-    const { scrollX, scrollY, isScrollingDown } = this.context;
-    return (
-      <pre>
-        scrollX: {scrollX}
-        scrollY: {scrollY}
-        isScrollingDown: {isScrollingDown ? 'yes' : 'no'}
-      </pre>
-    );
-  }
-}
+const ScrollContext = React.createContext('scroll-context');
 
 const App = () => (
   <ScrollProvider
@@ -127,43 +86,19 @@ const App = () => (
   >
     <div>
       <h1>Scroll it!</h1>
-      <ScrollDisplay />
+      <p>Ipsum lorem, a lot of content here...</p>
+      <LazyOffscreenImage
+        imageUrl="http://placekitten.com/300/300"
+        ScrollContext={ScrollContext}
+      />
     </div>
   </ScrollProvider>
 );
 ```
 
-> [`useContext`](https://reactjs.org/docs/hooks-reference.html#usecontext) hook
+## Demo
 
-```jsx
-import React, { useContext } from 'react';
-import { ScrollProvider } from '@foo-software/react-lazy-offscreen-image';
-
-// replace `scroll-context` any name you like.
-const Context = React.createContext('scroll-context');
-
-const ScrollDisplay = () => {
-  const { scrollX, scrollY, isScrollingDown } = useContext(Context);
-  return (
-    <pre>
-      scrollX: {scrollX}
-      scrollY: {scrollY}
-      isScrollingDown: {isScrollingDown ? 'yes' : 'no'}
-    </pre>
-  );
-};
-
-const App = () => (
-  <ScrollProvider
-    Context={Context}
-  >
-    <div>
-      <h1>Scroll it!</h1>
-      <ScrollDisplay />
-    </div>
-  </ScrollProvider>
-);
-```
+An example using this component can be seen on [Foo's features page](https://www.foo.software/features).
 
 ## Credits
 

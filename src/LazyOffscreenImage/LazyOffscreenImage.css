@@ -1,0 +1,10 @@
+.lazyOffscreenImage {
+  background-size: cover;
+  background-position: center;
+  transition: opacity 200ms;
+  opacity: 0;
+}
+
+.lazyOffscreenImage.lazyOffscreenImage--active {
+  opacity: 1;
+}
