@@ -30,9 +30,7 @@ const LazyOffscreenImage = ({
     const preloaded = new Image();
     preloaded.onload = () => {
       setActive(true);
-      console.log('are we here');
       if (onLoad) {
-        console.log('or here');
         onLoad();
       }
     };
