@@ -60,13 +60,6 @@ yarn add @foo-software/react-scroll-context @foo-software/react-lazy-offscreen-i
     <td><code>--</code></td>
   </tr>
   <tr>
-    <td><code>onImageLoad</code></td>
-    <td>Optional function called when the image has loaded.</td>
-    <td><code>function</code></td>
-    <td><code>false</code></td>
-    <td><code>undefined</code></td>
-  </tr>
-  <tr>
     <td><code>ScrollContext</code></td>
     <td>A scroll <code>Context</code> object created by <code>React.createContext()</code>. You will need to use the same context as with <a href="https://www.npmjs.com/package/@foo-software/react-scroll-context"><code>react-scroll-context</code></a>. This component depends on `react-scroll-context` to provide scroll data.</td>
     <td><code>object</code></td>
