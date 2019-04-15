@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import style from './LazyOffscreenImage.css';
+import './LazyOffscreenImage.css';
 
 const LazyOffscreenImage = ({
   children,
@@ -59,7 +59,7 @@ const LazyOffscreenImage = ({
   return (
     <CustomTag
       className={classnames('lazyOffscreenImage', className, {
-        [style['lazyOffscreenImage--active']]: active,
+        'lazyOffscreenImage--active': active,
       })}
       style={!active ? {} : { backgroundImage: `url("${imageUrl}")` }}
       ref={rootRef}
