@@ -1,9 +1,15 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import './LazyOffscreenBackground.css';
+import style from './LazyOffscreenImage.css';
 
-const LazyOffscreenBackground = ({
+const LazyOffscreenImage = ({
   children,
   className,
   CustomTag,
@@ -37,7 +43,7 @@ const LazyOffscreenBackground = ({
         onViewEnter();
       }
     }
-  }
+  };
 
   // `useEffect` without cleanup to imitate `componentDidMount`
   // and `componentDidUpdate`
@@ -53,7 +59,7 @@ const LazyOffscreenBackground = ({
   return (
     <CustomTag
       className={classnames('lazyOffscreenImage', className, {
-        'lazyOffscreenImage--active': active,
+        [style['lazyOffscreenImage--active']]: active,
       })}
       style={!active ? {} : { backgroundImage: `url("${imageUrl}")` }}
       ref={rootRef}
@@ -63,7 +69,7 @@ const LazyOffscreenBackground = ({
   );
 };
 
-LazyOffscreenBackground.propTypes = {
+LazyOffscreenImage.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   imageUrl: PropTypes.string.isRequired,
@@ -71,10 +77,10 @@ LazyOffscreenBackground.propTypes = {
   ScrollContext: PropTypes.object.isRequired,
 };
 
-LazyOffscreenBackground.defaultProps = {
+LazyOffscreenImage.defaultProps = {
   children: null,
   className: null,
   CustomTag: 'div',
 };
 
-export default LazyOffscreenBackground;
+export default LazyOffscreenImage;

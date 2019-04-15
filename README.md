@@ -1,6 +1,6 @@
 # `@foo-software/react-lazy-offscreen-image`
 
-> **React Lazy Offscreen Image** exports a lazy loading React component to display a background image when in the viewport and the image is loaded. When analyzing website performance with tools like [Lighthouse](https://developers.google.com/web/tools/lighthouse/) for example, often an opportunity for improvement is to load images below the fold on demand - asynchronously. [Lighthouse documentation explains offscreen image performance metric](https://developers.google.com/web/tools/lighthouse/audits/offscreen-images) in detail. This component provides lazy loading of images as an element with a backround image, when the user has scrolled it into the browser viewport. This technique is known as "lazy loading".
+> **React Lazy Offscreen Image** exports a lazy loading React component to display a background image when in the viewport and the image is loaded. When analyzing website performance with tools like [Lighthouse](https://developers.google.com/web/tools/lighthouse/) for example, often we find an opportunity for improvement in loading images below the fold, on demand - asynchronously. [Lighthouse documentation explains the offscreen image performance metric](https://developers.google.com/web/tools/lighthouse/audits/offscreen-images) in detail. This component provides lazy loading of images as an element with a backround image, when the user has scrolled it into the browser viewport. This technique is known as "lazy loading".
 
 ## Install
 
