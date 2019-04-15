@@ -60,7 +60,7 @@ yarn add @foo-software/react-scroll-context @foo-software/react-lazy-offscreen-i
     <td><code>--</code></td>
   </tr>
   <tr>
-    <td><code>onLoad</code></td>
+    <td><code>onImageLoad</code></td>
     <td>Optional function called when the image has loaded.</td>
     <td><code>function</code></td>
     <td><code>false</code></td>

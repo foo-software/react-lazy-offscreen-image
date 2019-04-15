@@ -14,7 +14,7 @@ const LazyOffscreenImage = ({
   className,
   CustomTag,
   imageUrl,
-  onLoad,
+  onImageLoad,
   ScrollContext,
 }) => {
   const [active, setActive] = useState(false);
@@ -30,8 +30,8 @@ const LazyOffscreenImage = ({
     const preloaded = new Image();
     preloaded.onload = () => {
       setActive(true);
-      if (onLoad) {
-        onLoad();
+      if (onImageLoad) {
+        onImageLoad();
       }
     };
     preloaded.src = imageUrl;
@@ -78,7 +78,7 @@ LazyOffscreenImage.propTypes = {
   className: PropTypes.string,
   imageUrl: PropTypes.string.isRequired,
   CustomTag: PropTypes.string,
-  onLoad: PropTypes.func,
+  onImageLoad: PropTypes.func,
   ScrollContext: PropTypes.object.isRequired,
 };
 
@@ -86,7 +86,7 @@ LazyOffscreenImage.defaultProps = {
   children: null,
   className: null,
   CustomTag: 'div',
-  onLoad: undefined,
+  onImageLoad: undefined,
 };
 
 export default LazyOffscreenImage;
