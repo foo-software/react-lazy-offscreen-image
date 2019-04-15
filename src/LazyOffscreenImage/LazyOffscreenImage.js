@@ -29,10 +29,11 @@ const LazyOffscreenImage = ({
     // load the image in the background. onload of the image - set state.
     const preloaded = new Image();
     preloaded.onload = () => {
-      setActive(true);
       if (onImageLoad) {
         onImageLoad();
       }
+
+      setActive(true);
     };
     preloaded.src = imageUrl;
   };
