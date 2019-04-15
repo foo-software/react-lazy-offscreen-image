@@ -61,7 +61,7 @@ yarn add @foo-software/react-lazy-offscreen-image
   </tr>
   <tr>
     <td><code>ScrollContext</code></td>
-    <td>A scroll <code>Context</code> object created by <code>React.createContext()</code>. You will need to use the same context as with [`react-scroll-context`](https://www.npmjs.com/package/@foo-software/react-scroll-context). This component depends on `react-scroll-context` to provide scroll data.</td>
+    <td>A scroll <code>Context</code> object created by <code>React.createContext()</code>. You will need to use the same context as with <a href="https://www.npmjs.com/package/@foo-software/react-scroll-context"><code>react-scroll-context</code></a>. This component depends on `react-scroll-context` to provide scroll data.</td>
     <td><code>object</code></td>
     <td><code>true</code></td>
     <td><code>--</code></td>
