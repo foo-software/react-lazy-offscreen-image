@@ -7,13 +7,13 @@
 > npm
 
 ```
-npm install @foo-software/react-lazy-offscreen-image
+npm install @foo-software/react-scroll-context @foo-software/react-lazy-offscreen-image
 ```
 
 > yarn
 
 ```
-yarn add @foo-software/react-lazy-offscreen-image
+yarn add @foo-software/react-scroll-context @foo-software/react-lazy-offscreen-image
 ```
 
 ## Dependencies
