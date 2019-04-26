@@ -1,6 +1,6 @@
 {
   "name": "@foo-software/react-lazy-offscreen-image",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "A lazy loading React component to display a background image when in the viewport and the image is loaded.",
   "main": "build/index.js",
   "peerDependencies": {
