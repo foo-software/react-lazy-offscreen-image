@@ -22,10 +22,6 @@ const LazyOffscreenImage = ({
   const rootRef = useRef(null);
 
   const onViewEnter = () => {
-    if (typeof window !== 'undefined') {
-      return;
-    }
-
     // set this state first to prevent duplicated calls
     setDidEnterView(true);
 
@@ -43,7 +39,7 @@ const LazyOffscreenImage = ({
       const { top } = rootElement.getBoundingClientRect();
 
       // if the element has never entered view and is now in view...
-      if (!didEnterView && top < window.innerHeight) {
+      if (typeof window !== 'undefined' && !didEnterView && top < window.innerHeight) {
         onViewEnter();
       }
     }
