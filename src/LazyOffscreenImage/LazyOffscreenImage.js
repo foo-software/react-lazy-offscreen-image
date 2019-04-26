@@ -23,7 +23,7 @@ const LazyOffscreenImage = ({
 
   const onViewEnter = () => {
     if (typeof window !== 'undefined') {
-      return null;
+      return;
     }
 
     // set this state first to prevent duplicated calls
