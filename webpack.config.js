@@ -7,7 +7,10 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'index.js',
-    globalObject: 'this',
+
+    // i dunno - i guess :(
+    // https://github.com/webpack/webpack/issues/6525#issuecomment-417580843
+    globalObject: `typeof self !== 'undefined' ? self : this`,
     libraryTarget: 'umd',
   },
   module: {
