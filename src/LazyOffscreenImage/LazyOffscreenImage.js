@@ -39,7 +39,7 @@ const LazyOffscreenImage = ({
       const { top } = rootElement.getBoundingClientRect();
 
       // if the element has never entered view and is now in view...
-      if (typeof window !== 'undefined' && !didEnterView && top < window.innerHeight) {
+      if (!didEnterView && top < window.innerHeight) {
         onViewEnter();
       }
     }
