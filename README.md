@@ -82,7 +82,7 @@ const ScrollContext = React.createContext('scroll-context');
 
 const App = () => (
   <ScrollProvider
-    Context={Context}
+    Context={ScrollContext}
   >
     <div>
       <h1>Scroll it!</h1>
